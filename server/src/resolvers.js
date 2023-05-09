@@ -1,27 +1,13 @@
 const resolvers = {
   Query: {
-    // returns an array of Tracks that will be used to populate the homepage grid of our web client
-    tracksForHome: (_, __, { dataSources }) => {
-      return dataSources.trackAPI.getTracksForHome();
+    // returns an array of Tasks
+    getTasks: (_, __, { dataSources }) => {
+      return dataSources.taskAPI.getAllTask();
     },
 
-    // get a single track by ID, for the track page
-    track: (_, { id }, { dataSources }) => {
-      return dataSources.trackAPI.getTrack(id);
-    },
-
-    // get a single module by ID, for the module detail page
-    module: (_, { id }, { dataSources }) => {
-      return dataSources.trackAPI.getModule(id);
-    },
-  },
-  Track: {
-    author: ({ authorId }, _, { dataSources }) => {
-      return dataSources.trackAPI.getAuthor(authorId);
-    },
-
-    modules: ({ id }, _, { dataSources }) => {
-      return dataSources.trackAPI.getTrackModules(id);
+    // get a single task by ID
+    getTaskById: (_, { id }, { dataSources }) => {
+      return dataSources.taskAPI.getTaskById(id);
     },
   },
 };
