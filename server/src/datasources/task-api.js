@@ -1,9 +1,13 @@
-const { RESTDataSource } = require('@apollo/datasource-rest');
+import {RESTDataSource} from 'apollo-datasource-rest';
 
-class TaskAPI extends RESTDataSource {
-  baseURL = 'http://localhost:8080/';
+export class TaskAPI extends RESTDataSource {
 
-  getAllTask() {
+  constructor() {
+    super();
+    this.baseURL = 'http://localhost:8080/';
+  }
+
+  getAllTasks() {
     return this.get('tasks');
   }
 
@@ -11,11 +15,11 @@ class TaskAPI extends RESTDataSource {
     return this.get(`tasks/${id}`);
   }
 
-  addTask(name) {
-    return this.post('tasks', { name: name });
+  async addTask(name) {
+    return await this.post('tasks', {name: name, completed: false});
   }
-  updateTaskById(id, name, completed) {
-    return this.put(`tasks/${id}`, { name: name, completed: completed });
+  async updateTaskById(id, name, completed) {
+    return await this.put(`tasks/${id}`, { name: name, completed: completed });
   }
 
   // 或许可以增加 deleted 字段实现软删除
@@ -23,5 +27,3 @@ class TaskAPI extends RESTDataSource {
     return this.delete(`tasks/${id}`)
   }
 }
-
-module.exports = TaskAPI;
