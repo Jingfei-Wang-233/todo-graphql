@@ -1,0 +1,24 @@
+{
+  "name": "catstronauts-server",
+  "version": "1.0.0",
+  "description": "back-end for todo-list-graphql using apollo studio",
+  "main": "src/index.js",
+  "scripts": {
+    "rest-server": "json-server --watch json-server/api.json -p 8080",
+    "lint": "eslint --fix \"**/*.{js,jsx,ts,tsx,scss,md,json}\"",
+    "start": "nodemon src/index"
+  },
+  "dependencies": {
+    "@apollo/datasource-rest": "^5.0.2",
+    "@apollo/server": "^4.5.0",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.4"
+  },
+  "author": "Raphael Terrier @R4ph-t",
+  "license": "MIT",
+  "private": true
+}
