@@ -22,8 +22,8 @@ export const typeDefs = gql`
     "The id of the task"
     id: Int!
     "The description of the task"
-    name: String
+    name: String!
     "The status of the task"
-    completed: Boolean
+    completed: Boolean!
   }
 `;

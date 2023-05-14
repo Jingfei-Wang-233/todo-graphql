@@ -19,14 +19,21 @@ export const resolvers = {
       return res;
     },
     updateTaskById: async (_, { id, name, completed }, { dataSources }) => {
-      const res = dataSources.taskAPI.updateTaskById(id, name, completed);
-      console.log(res);
-      return res;
+      try {
+        return await dataSources.taskAPI.updateTaskById(id, name, completed);
+      } catch (err) {
+        if (err.message.valueOf() === '404: Not Found') {
+          throw new Error(`Task ${id} not found`);
+        }
+      }
     },
     deleteTaskById: async (_, { id }, { dataSources }) => {
-      const response = await dataSources.taskAPI.deleteTaskById(id);
-      console.log(response);
-      return `Task ${id} has been deleted successfully!`
+      try {
+        await dataSources.taskAPI.deleteTaskById(id)
+        return `Task ${id} has been deleted successfully!`;
+      } catch (err) {
+        console.log(err);
+      }
     },
   }
 };
