@@ -1,5 +1,5 @@
 {
-  "name": "catstronauts-server",
+  "name": "todo-graphql-server",
   "version": "1.0.0",
   "description": "back-end for todo-list-graphql using apollo studio",
   "main": "src/index.js",
@@ -21,7 +21,7 @@
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.4"
   },
-  "author": "Raphael Terrier @R4ph-t",
+  "author": "xiao wang",
   "license": "MIT",
   "private": true
 }
